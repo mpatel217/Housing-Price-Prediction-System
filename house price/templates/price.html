@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Price Prediction Website</title>
+        <meta name="description" content="Responsive Photography website ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <!------ Font Awesome ------>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+    	<!-- HERE START NAVIGATION BAR -->
+    	<header>
+    		<a href="{{ url_for('index') }}" class="logo">PredictPrice</a>
+    		 <input type="checkbox" id="menu-bar">
+	 		 <label for="menu-bar" class="fas fa-bars" ></label>
+			  <nav class="navbar">
+				{% if not session.get('username') %}
+				<a href="{{ url_for('index') }}">Home</a>
+				<a href="{{ url_for('login') }}">Log In</a>
+				{% else %}
+				  <a href="{{ url_for('logout') }}">Logout</a>
+			  {% endif %}
+		  </nav>
+			
+			
+    	</header>
+
+    	<div class="hero">
+    		<div class="info">
+    			<p>"Store your memories in cameras and enjoy your life with peacefulness"</p>
+    		</div>
+    	</div>
+
+    	<!-- HERE START GALLERY CODE   -->
+    	<body style="background: linear-gradient(135deg, #485a6a, #66535c);">
+			<div class="register_page">
+				<div class="form">
+					<form action="{{url_for('predict')}}" method="POST">
+						Bedrooms: <input type="number" name='bedrooms' placeholder="Enter the no of Bedrooms"><br>
+						Bathrooms: <input type="number" name='bathrooms' placeholder="Enter the no of Bathrooms"><br>
+						Floors: <input type="number" name='floors' placeholder="Enter the no of Floors"><br>
+						Year of Build: <input type="number" name='yr_built' placeholder="Enter year of Build"><br>
+						<input type="submit" value="predict" class="submit">
+					</form>
+					<p> House Price is: ₹ {{data}}</p>
+					<div class="container">
+						<table>
+							<thead>
+								<tr>
+									<th>Bedrooms</th>
+									<th>Bathrooms</th>
+									<th>Floors</th>
+									<th>Year of Build</th>
+									<th>Predicted Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for search in historical_searches %}
+								<tr>
+									<td>{{ search.bedrooms }}</td>
+									<td>{{ search.bathrooms }}</td>
+									<td>{{ search.floors }}</td>
+									<td>{{ search.yr_built }}</td>
+									<td>₹ {{ search.predicted_price }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</body>
+
+   
+
+    	<!-- HERE FOOTER SECTION CODE START -->
+
+    	<footer>
+    		<h3>If you want to know more, then contact us.<br>
+    		predictprice@gmail.com<br></h3>
+    		<h6>For customer support
+    			<br>2000-009-000
+    		<br>Thank you</h6>
+    	</footer>
+    	<div class="copywrite">
+    			<h6>copywrite@predictprice all images here use for education purpose</h6>
+    		</div>
+
+
+
+    		<script type="">
+    			let tabs = document.querySelectorAll(".g_navbar a");  //for navbar select
+				let tabContents = document.querySelectorAll(".l-container-g div");  // for gallery content contain
+						tabs.forEach((tab, index) => 
+						{
+  						  tab.addEventListener("click", () => 
+  						 {
+   							tabContents.forEach((content) => 
+   							  {
+     							 content.classList.remove("active");
+    						  }); // when click the tab gallery content will be active
+
+
+   							tabs.forEach((tab) =>
+   							   {
+     								tab.classList.remove("active");
+   							   }); // when you another tab present tab will be removed
+
+   							tabContents[index].classList.add("active");
+  						    tabs[index].classList.add("active");
+ 						  });
+						});
+    		</script>
+    </body>
+</html>

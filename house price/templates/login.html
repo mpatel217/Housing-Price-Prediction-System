@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> Price Prediction Website</title>
+        <meta name="description" content="Responsive Photography website ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <!------ Font Awesome ------>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+    	<!-- HERE START NAVIGATION BAR -->
+    	<header>
+    		<a href="{{ url_for('index') }}" class="logo">PredictPrice</a>
+
+    		 <input type="checkbox" id="menu-bar">
+	 		 <label for="menu-bar" class="fas fa-bars" ></label>
+			  <nav class="navbar">
+				  {% if not session.get('username') %}
+				  <a href="{{ url_for('index') }}">Home</a>
+				  <a href="{{ url_for('login') }}">Log In</a>
+				  {% else %}
+					<a href="{{ url_for('logout') }}">Logout</a>
+				{% endif %}
+			</nav>
+					
+    	</header>
+
+
+    	<div class="hero">
+    		<div class="info">
+    			<p>"You Aren’t Just Buying A House, You’re Buying A Lifestyle!"</p>
+    		</div>
+    	</div>
+
+    	<!-- HERE CODE FOR CONTACT FORM CREATING -->
+    	<div class="card">
+    		<img src="{{ url_for('static', filename='image/p2.jpg') }}">
+    	<div class="login-card">
+    		<h2>Login</h2>
+    		<h3>Enter your credentials</h3>
+    		<form class="login-form" action="{{url_for('login')}}" method="POST">
+    			<input type="text" name='username' placeholder="Username" required>
+				<input type="password" name='password' placeholder="Password" required>
+    			<input type="submit" value="Login" class="submit">
+    		</form>
+    	</div>
+    	</div>
+    	<!-- HERE FOOTER SECTION CODE START -->
+
+    	<footer>
+    		<h3>If you want to know more, then contact us.<br>
+    		predictprice@gmail.com<br></h3>
+    		<h6>For customer support
+    			<br>2000-009-000
+    		<br>Thank you</h6>
+    	</footer>
+    	<div class="copywrite">
+    			<h6>copywrite@predictprice all images here use for education purpose</h6>
+    		</div>
+    </body>
+    </html>

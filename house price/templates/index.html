@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> Price Prediction Website</title>
+        <meta name="description" content="Responsive Photography website ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!------ Font Awesome ------>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+    	<!-- HERE START NAVIGATION BAR -->
+    	<header>
+    		<a href="{{ url_for('index') }}" class="logo">PredictPrice</a>
+
+    		 <input type="checkbox" id="menu-bar">
+	 		 <label for="menu-bar" class="fas fa-bars" ></label>
+              <nav class="navbar">
+                {% if not session.get('username') %}
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('login') }}">Log In</a>
+                {% else %}
+                  <a href="{{ url_for('logout') }}">Logout</a>
+              {% endif %}
+          </nav>
+            
+            
+    	</header>
+
+
+    	<!-- HERE START HERO SECTION -->
+
+    	<section class="home" id="home" style="background: url('{{ url_for('static', filename='image/home_img4.jpg') }}');">
+    		<div class="home-container">
+    			<h1>Home isn't a place, it's a Feeling!</h1>
+    			<p>You Aren’t Just Buying A House, You’re Buying A Lifestyle! </p>
+    		</div>
+    	</section>
+
+
+    	<!-- HERE START SERVICES -->
+
+    	<section class="service" id="service">
+    		<h2>Our Service</h2>
+    		<div class="row1">
+    			<div class="g-img">
+    				<img src="{{ url_for('static', filename='image/nl2.jpg') }}" alt="image" width="100%">
+    				<a href="{{ url_for('login') }}" class="btn">Predict Price</a>
+    			</div>
+    			<div class="g-img">
+    				<img src="{{ url_for('static', filename='image/f (1).jpeg') }}" alt="image" width="100%">
+    				<a href="{{ url_for('login') }}" class="btn">Predict Price</a>
+    			</div>
+    			<div class="g-img">
+    				<img src="{{ url_for('static', filename='image/we (1).jpg') }}" alt="image" width="100%">
+    				<a href="{{ url_for('login') }}" class="btn">Predict Price</a>
+    			</div>
+    		</div>
+    	</section>
+
+
+    	<!-- HERE START ABOUT US -->
+    	<section class="about" id="about">
+    		<h2>About Us</h2>
+    		<div class="row1">
+    			<div class="pics">
+    				<img src="{{ url_for('static', filename='image/about.jpeg') }}"  alt="about image" width="100%" height="100%">
+    			</div>
+    			<div class="info">
+    				<h4>You Know About us </h4>
+    				<p>  Welcome to PredictPrice, your trusted source for accurate and insightful housing price predictions. 
+					We understand that finding the perfect home or making informed real estate investments can be a daunting task. 
+					 That's why we're here to simplify the process. Our team of experienced data analysts and real estate experts 
+					  have developed a sophisticated algorithm that takes into account a multitude of factors to provide you with 
+					      reliable estimates of property values. Whether you're a prospective buyer, seller, or investor, 
+					    our platform empowers you with the knowledge you need to make confident decisions. At PredictPrice, 
+					      we're dedicated to bringing transparency and confidence to the real estate market. Explore our 
+					                    intuitive tools and discover the future of property valuation today.</p>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- HERE START LATEST IMAGE SECTION -->
+
+    	<section class="latest" id="latest">
+    		<h2>Special Homes</h2>
+    		<div class="l-container">
+    				<img src="{{ url_for('static', filename='image/1.jpg') }}">
+  					 <img src="{{ url_for('static', filename='image/2.jpg') }}">
+  					 <img src="{{ url_for('static', filename='image/3.jpg') }}">
+  					  <img src="{{ url_for('static', filename='image/4.jpg') }}">
+  					 <img src="{{ url_for('static', filename='image/5.jpg') }}">
+  					  <img src="{{ url_for('static', filename='image/6.jpg') }}">
+  					 <img src="{{ url_for('static', filename='image/7.jpg') }}">
+					   <img src="{{ url_for('static', filename='image/8.jpg') }}">
+					   <img src="{{ url_for('static', filename='image/9.jpeg') }}">
+					   <img src="{{ url_for('static', filename='image/10.jpeg') }}">
+					   <img src="{{ url_for('static', filename='image/11.jpeg') }}">
+					   <img src="{{ url_for('static', filename='image/12.jpeg') }}">
+   					
+
+    	</section>
+
+    	<!-- HERE START  -->
+
+    	<footer>
+    		<h3>If you want to know more, then contact us.<br>
+    		predictprice@gmail.com<br></h3>
+    		<h6>For customer support
+    			<br>2000-009-000
+    		<br>Thank you</h6>
+    	</footer>
+    	<div class="copywrite">
+    			<h6>copywrite@predictprice all images here use for education purpose</h6>
+    		</div>
+    </body>
+</html>
